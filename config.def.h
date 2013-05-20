@@ -18,6 +18,8 @@ static const Bool topbar            = True;     /* False means bottom bar */
 
 /* terminal specific settings */
 static const char termbase[]             = "rxvt -ls +sb -sl 1000";
+static const char termbg_light[]         = "white";
+static const char termbg_dark[]          = "black";
 static const char termscheme_light[]     = "-bg black -fg white";
 static const char termscheme_dark[]      = "-bg black -fg white";
 static const char termfont_nexus[]       = "-fn nexus";
@@ -65,14 +67,14 @@ static const Layout layouts[] = {
 /* dmenu */
 static const char *dmenucmd[]             = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 /* default terminal */
-static const char *termcmd[]              = { termbase, termscheme_dark, font, NULL };
+static const char *termcmd[]              = { "rxvt", "-ls", "+sb", "-sl", "1000", "-bg", termbg_dark, "-fg", termbg_light, "-fn", font, NULL };
 /* various terminal setups */
-static const char *termcmd_nexusdark[]    = { termbase, termscheme_dark,  termfont_nexus, NULL };
-static const char *termcmd_nexuslight[]   = { termbase, termscheme_light, termfont_nexus, NULL };
-static const char *termcmd_vgadark[]      = { termbase, termscheme_dark,  termfont_vga,   NULL };
-static const char *termcmd_vgalight[]     = { termbase, termscheme_light, termfont_vga,   NULL };
-static const char *termcmd_prodark[]      = { termbase, termscheme_dark,  termfont_pro,   NULL };
-static const char *termcmd_prolight[]     = { termbase, termscheme_light, termfont_pro,   NULL };
+static const char *termcmd_nexusdark[]    = { "rxvt", "-ls", "+sb", "-sl", "1000", "-bg", termbg_dark,  "-fg", termbg_light, "-fn", font_nexus, NULL };
+static const char *termcmd_nexuslight[]   = { "rxvt", "-ls", "+sb", "-sl", "1000", "-bg", termbg_light, "-fg", termbg_dark,  "-fn", font_nexus, NULL };
+static const char *termcmd_vgadark[]      = { "rxvt", "-ls", "+sb", "-sl", "1000", "-bg", termbg_dark,  "-fg", termbg_light, "-fn", font_vga,   NULL };
+static const char *termcmd_vgalight[]     = { "rxvt", "-ls", "+sb", "-sl", "1000", "-bg", termbg_light, "-fg", termbg_dark,  "-fn", font_vga,   NULL };
+static const char *termcmd_prodark[]      = { "rxvt", "-ls", "+sb", "-sl", "1000", "-bg", termbg_dark,  "-fg", termbg_light, "-fn", font_pro,   NULL };
+static const char *termcmd_prolight[]     = { "rxvt", "-ls", "+sb", "-sl", "1000", "-bg", termbg_light, "-fg", termbg_dark,  "-fn", font_pro,   NULL };
 /* volume adjustments */
 static const char *volumedown[]           = { "amixer", "-q", "set", "Master", "2%-", "unmute", NULL };
 static const char *volumeup[]             = { "amixer", "-q", "set", "Master", "2%+", "unmute", NULL };
