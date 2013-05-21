@@ -1,3 +1,38 @@
 #!/bin/bash
 
+nitrogen --restore &
+
+pidfile="/tmp/audacious.pid"
+
+# kill audacious if it's already running
+if killall -0 audacious > /dev/null 2>&1; then
+	killall -9 audacious
+fi
+audacious --headless &
+
+currentmusic() {
+	# make sure audacious is actually running before doing anything
+	if ! killall -0 audacious > /dev/null 2>&1; then
+		echo "Stopped - --/--"
+		return
+	fi
+
+	trackname=$(audtool --current-song)
+	time="$(audtool --current-song-output-length)/$(audtool --current-song-length)"
+
+	if $(audtool --playback-playing); then status="$time"; fi
+	if $(audtool --playback-paused); then status="**${time}**"; fi
+	if $(audtool --playback-stopped); then echo "Stopped - --/--"; return; fi
+
+	echo "$trackname - $status"
+}
+
+while true; do
+	TIME=$(date +'%a %F %T')
+	VOL=$(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')
+	MUSIC=$(currentmusic)
+
+	xsetroot -name "$MUSIC :: $VOL :: $TIME"
+done &
+
 exec dwm

@@ -78,6 +78,12 @@ static const char *termcmd_prolight[]     = { "rxvt", "-ls", "+sb", "-sl", "1000
 /* volume adjustments */
 static const char *volumedown[]           = { "amixer", "-q", "set", "Master", "2%-", "unmute", NULL };
 static const char *volumeup[]             = { "amixer", "-q", "set", "Master", "2%+", "unmute", NULL };
+/* audacious commands */
+static const char *audio_playpause[]      = { "audtool", "--playback-playpause", NULL };
+static const char *audio_next[]           = { "audtool", "--playlist-advance", NULL };
+static const char *audio_prev[]           = { "audtool", "--playlist-reverse", NULL };
+/* lock screen */
+static const char *screensaver[]          = { "gnome-screensaver-command", "-l", NULL };
 
 
 static Key keys[] = {
@@ -123,6 +129,10 @@ static Key keys[] = {
 	{ ShiftMask,                    XK_F4,     spawn,          {.v = termcmd_prodark}},
 	{ 0,                            XK_F7,     spawn,          {.v = volumedown}},
 	{ 0,                            XK_F8,     spawn,          {.v = volumeup}},
+	{ 0,                            XK_F9,     spawn,          {.v = audio_playpause}},
+	{ 0,                            XK_F10,    spawn,          {.v = audio_prev}},
+	{ 0,                            XK_F11,    spawn,          {.v = audio_next}},
+	{ 0,                            XK_F12,    spawn,          {.v = screensaver}},
 };
 
 /* button definitions */
