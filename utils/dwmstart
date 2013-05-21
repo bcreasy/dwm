@@ -2,8 +2,6 @@
 
 nitrogen --restore &
 
-pidfile="/tmp/audacious.pid"
-
 # kill audacious if it's already running
 if killall -0 audacious > /dev/null 2>&1; then
 	killall -9 audacious
