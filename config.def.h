@@ -85,7 +85,7 @@ static const char *audio_playpause[]      = { "audtool", "--playback-playpause",
 static const char *audio_next[]           = { "audtool", "--playlist-advance", NULL };
 static const char *audio_prev[]           = { "audtool", "--playlist-reverse", NULL };
 /* lock screen */
-static const char *screensaver[]          = { "gnome-screensaver-command", "-l", NULL };
+static const char *screensaver[]          = { "xscreensaver-command", "--lock", NULL };
 
 
 static Key keys[] = {
