@@ -87,6 +87,8 @@ static const char *audio_prev[]           = { "audtool", "--playlist-reverse", N
 /* lock screen */
 static const char *screensaver[]          = { "xscreensaver-command", "--lock", NULL };
 
+static const char *scrot[]                = { "scrot", NULL };
+
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -135,6 +137,7 @@ static Key keys[] = {
 	{ 0,                            XK_F10,    spawn,          {.v = audio_prev}},
 	{ 0,                            XK_F11,    spawn,          {.v = audio_next}},
 	{ 0,                            XK_F12,    spawn,          {.v = screensaver}},
+	{ MODKEY|ShiftMask,             XK_3,      spawn,          {.v = scrot}},
 };
 
 /* button definitions */
