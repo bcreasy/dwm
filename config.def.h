@@ -80,10 +80,15 @@ static const char *termcmd_prolight[]     = { "rxvt", "-ls", "-sl", "1000", "-bg
 /* volume adjustments */
 static const char *volumedown[]           = { "amixer", "-q", "set", "Master", "2%-", "unmute", NULL };
 static const char *volumeup[]             = { "amixer", "-q", "set", "Master", "2%+", "unmute", NULL };
-/* audacious commands */
-static const char *audio_playpause[]      = { "audtool", "--playback-playpause", NULL };
-static const char *audio_next[]           = { "audtool", "--playlist-advance", NULL };
-static const char *audio_prev[]           = { "audtool", "--playlist-reverse", NULL };
+
+/* audio commands */
+//static const char *audio_playpause[]      = { "audtool", "--playback-playpause", NULL };
+//static const char *audio_next[]           = { "audtool", "--playlist-advance", NULL };
+//static const char *audio_prev[]           = { "audtool", "--playlist-reverse", NULL };
+static const char *audio_playpause[]      = { "mocp", "-G", NULL };
+static const char *audio_next[]           = { "mocp", "-f", NULL };
+static const char *audio_prev[]           = { "mocp", "-r", NULL };
+
 /* lock screen */
 static const char *screensaver[]          = { "xscreensaver-command", "--lock", NULL };
 
