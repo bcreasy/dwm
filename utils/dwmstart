@@ -55,9 +55,10 @@ currentmusic() {
 while true; do
 	TIME=$(date +'%a %F %T')
 	VOL=$(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')
+	BATT=$(acpi -b | cut -f2 -d, | sed 's/ //g')
 	MUSIC=$(currentmusic)
 
-	xsetroot -name "$MUSIC :: $VOL :: $TIME"
+	xsetroot -name "$MUSIC :: $VOL :: $BATT :: $TIME"
 	sleep 1
 done &
 
