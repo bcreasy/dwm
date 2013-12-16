@@ -67,6 +67,8 @@ static const Layout layouts[] = {
 /* commands */
 
 /* dmenu */
+
+static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]             = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 /* default terminal */
 static const char *termcmd[]              = { "urxvt", "-ls", "-sl", "1000", "-bg", termbg_dark, "-fg", termbg_light, "-fn", font, NULL };
