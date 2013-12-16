@@ -1,8 +1,8 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const char font[]            = "ProFont";
-static const char font_pro[]        = "ProFont";
+static const char font[]            = "-nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1";
+static const char font_pro[]        = "profont";
 static const char font_vga[]        = "vga";
 static const char font_nexus[]      = "nexus";
 static const char normbordercolor[] = "#444444";
