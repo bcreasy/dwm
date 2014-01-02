@@ -1,8 +1,9 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const char font[]            = "-nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1";
+static const char font[]            = "-gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso8859-1";
 static const char font_pro[]        = "profont";
+static const char font_gohu[]       = "-gohu-gohufont-medium-r-normal--11-80-100-100-c-60-iso8859-1";
 static const char font_vga[]        = "vga";
 static const char font_nexus[]      = "nexus";
 static const char normbordercolor[] = "#444444";
@@ -71,14 +72,16 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[]             = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 /* default terminal */
-static const char *termcmd[]              = { "urxvt", "-ls", "-sl", "1000", "-bg", termbg_dark, "-fg", termbg_light, "-fn", font, NULL };
-/* various terminal setups */
-static const char *termcmd_nexusdark[]    = { "urxvt", "-ls", "-sl", "1000", "-bg", termbg_dark,  "-fg", termbg_light, "-fn", font_nexus, NULL };
-static const char *termcmd_nexuslight[]   = { "urxvt", "-ls", "-sl", "1000", "-bg", termbg_light, "-fg", termbg_dark,  "-fn", font_nexus, NULL };
-static const char *termcmd_vgadark[]      = { "urxvt", "-ls", "-sl", "1000", "-bg", termbg_dark,  "-fg", termbg_light, "-fn", font_vga,   NULL };
-static const char *termcmd_vgalight[]     = { "urxvt", "-ls", "-sl", "1000", "-bg", termbg_light, "-fg", termbg_dark,  "-fn", font_vga,   NULL };
-static const char *termcmd_prodark[]      = { "urxvt", "-ls", "-sl", "1000", "-bg", termbg_dark,  "-fg", termbg_light, "-fn", font_pro,   NULL };
-static const char *termcmd_prolight[]     = { "urxvt", "-ls", "-sl", "1000", "-bg", termbg_light, "-fg", termbg_dark,  "-fn", font_pro,   NULL };
+static const char *termcmd[]              = { "urxvt", NULL };
+/* various terminal setups -- assume properly configured .Xresources */
+static const char *termcmd_nexusdark[]    = { "urxvt", "-bg", termbg_dark,  "-fg", termbg_light, "-fn", font_nexus, NULL };
+static const char *termcmd_nexuslight[]   = { "urxvt", "-bg", termbg_light, "-fg", termbg_dark,  "-fn", font_nexus, NULL };
+static const char *termcmd_vgadark[]      = { "urxvt", "-bg", termbg_dark,  "-fg", termbg_light, "-fn", font_vga,   NULL };
+static const char *termcmd_vgalight[]     = { "urxvt", "-bg", termbg_light, "-fg", termbg_dark,  "-fn", font_vga,   NULL };
+static const char *termcmd_prodark[]      = { "urxvt", "-bg", termbg_dark,  "-fg", termbg_light, "-fn", font_pro,   NULL };
+static const char *termcmd_prolight[]     = { "urxvt", "-bg", termbg_light, "-fg", termbg_dark,  "-fn", font_pro,   NULL };
+static const char *termcmd_dark[]         = { "urxvt", "-bg", termbg_dark,  "-fg", termbg_light, NULL };
+static const char *termcmd_light[]        = { "urxvt", "-bg", termbg_light, "-fg", termbg_dark,  NULL };
 /* volume adjustments */
 static const char *volumedown[]           = { "amixer", "-q", "set", "Master", "2%-", "unmute", NULL };
 static const char *volumeup[]             = { "amixer", "-q", "set", "Master", "2%+", "unmute", NULL };
@@ -136,8 +139,8 @@ static Key keys[] = {
 	{ ShiftMask,                    XK_F2,     spawn,          {.v = termcmd_nexuslight}},
 	{ 0,                            XK_F3,     spawn,          {.v = termcmd_vgadark}},
 	{ ShiftMask,                    XK_F3,     spawn,          {.v = termcmd_vgalight}},
-	{ 0,                            XK_F4,     spawn,          {.v = termcmd_prodark}},
-	{ ShiftMask,                    XK_F4,     spawn,          {.v = termcmd_prolight}},
+	{ 0,                            XK_F4,     spawn,          {.v = termcmd_dark}},
+	{ ShiftMask,                    XK_F4,     spawn,          {.v = termcmd_light}},
 	{ 0,                            XK_F7,     spawn,          {.v = volumedown}},
 	{ 0,                            XK_F8,     spawn,          {.v = volumeup}},
 	{ 0,                            XK_F9,     spawn,          {.v = audio_playpause}},
