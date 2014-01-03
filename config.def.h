@@ -76,8 +76,8 @@ static const char *termcmd[]              = { "urxvt", NULL };
 /* various terminal setups -- assume properly configured .Xresources */
 static const char *termcmd_nexusdark[]    = { "urxvt", "-bg", termbg_dark,  "-fg", termbg_light, "-fn", font_nexus, NULL };
 static const char *termcmd_nexuslight[]   = { "urxvt", "-bg", termbg_light, "-fg", termbg_dark,  "-fn", font_nexus, NULL };
-static const char *termcmd_vgadark[]      = { "urxvt", "-bg", termbg_dark,  "-fg", termbg_light, "-fn", font_vga,   NULL };
-static const char *termcmd_vgalight[]     = { "urxvt", "-bg", termbg_light, "-fg", termbg_dark,  "-fn", font_vga,   NULL };
+static const char *termcmd_vgadark[]      = { "rxvt", "-bg", termbg_dark,  "-fg", termbg_light, "-fn", font_vga,   NULL };
+static const char *termcmd_vgalight[]     = { "rxvt", "-bg", termbg_light, "-fg", termbg_dark,  "-fn", font_vga,   NULL };
 static const char *termcmd_prodark[]      = { "urxvt", "-bg", termbg_dark,  "-fg", termbg_light, "-fn", font_pro,   NULL };
 static const char *termcmd_prolight[]     = { "urxvt", "-bg", termbg_light, "-fg", termbg_dark,  "-fn", font_pro,   NULL };
 static const char *termcmd_dark[]         = { "urxvt", "-bg", termbg_dark,  "-fg", termbg_light, NULL };
