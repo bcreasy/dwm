@@ -3,14 +3,14 @@
 musicplayer="moc"
 #musicplayer="audacious"
 
-nitrogen --restore &
+/usr/bin/nitrogen --restore &
 
 if [[ "$musicplayer" == "audacious" ]]; then
 	# kill audacious if it's already running
 	if killall -0 audacious > /dev/null 2>&1; then
 		killall -9 audacious
 	fi
-	audacious --headless &
+	/usr/bin/audacious --headless &
 fi
 
 currentmusic() {
@@ -21,17 +21,17 @@ currentmusic() {
 			return
 		fi
 
-		trackname=$(audtool --current-song)
+		trackname=$(/usr/bin/audtool --current-song)
 		time="$(audtool --current-song-output-length)/$(audtool --current-song-length)"
 
-		if $(audtool --playback-playing); then status="$time"; fi
-		if $(audtool --playback-paused); then status="**${time}**"; fi
-		if $(audtool --playback-stopped); then echo "Stopped - --/--"; return; fi
+		if $(/usr/bin/audtool --playback-playing); then status="$time"; fi
+		if $(/usr/bin/audtool --playback-paused); then status="**${time}**"; fi
+		if $(/usr/bin/audtool --playback-stopped); then echo "Stopped - --/--"; return; fi
 	fi
 
 	if [[ $musicplayer == "moc" ]]; then
-		if ! mocp -i > /dev/null 2>&1; then
-			mocp -S > /dev/null 2>&1
+		if ! /usr/bin/mocp -i > /dev/null 2>&1; then
+			/usr/bin/mocp -S > /dev/null 2>&1
 		fi
 		case $(mocp -i | grep "^State:" | awk '{print $2}') in
 			STOP)
@@ -39,26 +39,26 @@ currentmusic() {
 				return
 				;;
 			PLAY)
-				status=$(mocp -Q "%ct/%tt")
+				status=$(/usr/bin/mocp -Q "%ct/%tt")
 				;;
 			PAUSE)
-				status=$(mocp -Q "**%ct/%tt**")
+				status=$(/usr/bin/mocp -Q "**%ct/%tt**")
 				;;
 		esac
 
-		trackname=$(mocp -Q "%artist - %album - %song")
+		trackname=$(/usr/bin/mocp -Q "%artist - %album - %song")
 	fi
 
 	echo "$trackname - $status"
 }
 
 while true; do
-	TIME=$(date +'%a %F %T')
-	VOL=$(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')
-	BATT=$(acpi -b | cut -f2 -d, | sed 's/ //g')
+	TIME=$(/usr/bin/date +'%a %F %T')
+	VOL=$(/usr/bin/amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')
+	BATT=$(/usr/bin/acpi -b | cut -f2 -d, | sed 's/ //g')
 	MUSIC=$(currentmusic)
 
-	xsetroot -name "$MUSIC :: $VOL :: $BATT :: $TIME"
+	/usr/bin/xsetroot -name "$MUSIC :: $VOL :: $BATT :: $TIME"
 	sleep 1
 done &
 
