@@ -98,6 +98,7 @@ static const char *audio_prev[]           = { "mocp", "-r", NULL };
 static const char *screensaver[]          = { "xscreensaver-command", "--lock", NULL };
 
 static const char *scrot[]                = { "scrot", NULL };
+static const char *scrot_select[]         = { "scrot", "-s", NULL };
 
 
 static Key keys[] = {
@@ -148,6 +149,7 @@ static Key keys[] = {
 	{ 0,                            XK_F11,    spawn,          {.v = audio_next}},
 	{ 0,                            XK_F12,    spawn,          {.v = screensaver}},
 	{ MODKEY|ShiftMask,             XK_3,      spawn,          {.v = scrot}},
+	{ MODKEY|ShiftMask,             XK_4,      spawn,          {.v = scrot_select}},
 };
 
 /* button definitions */
